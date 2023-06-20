@@ -1,5 +1,5 @@
 import "./globals.css";
-import { inter } from "@/ui/fonts/fonts";
+import { urbanist } from "@/ui/fonts/fonts";
 
 export const metadata = {
   title: "Primetasker",
@@ -13,9 +13,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} bg-slate-800 text-white`}>
+      <body
+        className={`
+        font-brand 
+        text-paragraph
+           w-full 
+           mx-auto 
+        
+           `}
+      >
         {children}
       </body>
     </html>
   );
 }
+//  max-w-[30.4rem]
+//  md:max-w-[75.2rem]
+//  lg:max-w-[113.6rem]
