@@ -1,5 +1,6 @@
-import "./globals.css";
 import { urbanist } from "@/ui/fonts/fonts";
+
+import "./globals.css";
 
 export const metadata = {
   title: "Primetasker",
@@ -13,15 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={`
-        font-brand 
-        text-paragraph
-           w-full 
-           mx-auto 
-        
-           `}
-      >
+      <body className={`font-brand text-paragraph w-full mx-auto `}>
         {children}
       </body>
     </html>

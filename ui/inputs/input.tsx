@@ -1,7 +1,7 @@
 "use client";
 
-import React, { InputHTMLAttributes, ChangeEvent } from "react";
 import Button from "@/ui/buttons/button";
+import React, { ChangeEvent, InputHTMLAttributes } from "react";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
@@ -41,19 +41,11 @@ const InputBox = ({
           name={name}
           type={type}
           placeholder={placeholder}
-          className={`
-           
-            ${className} 
-            ${
-              errors.length > 0
-                ? " border-critical-50 focus:border-critical-50"
-                : ""
-            }
-            my-1 border-[0.15rem]
-            border-neutral-50 text-paragraph
-            outline-none rounded-xs  
-             focus:border-neutral-90 
-            disabled:bg-neutral-10 px-[1.2rem] py-[2rem]`}
+          className={`${className} ${
+            errors.length > 0
+              ? " border-critical-50 focus:border-critical-50"
+              : ""
+          } my-1 border-[0.15rem] border-neutral-50 text-paragraph outline-none rounded-xs focus:border-neutral-90 disabled:bg-neutral-10 px-[1.2rem] py-[2rem]`}
           onChange={onChange}
         />
 
@@ -70,7 +62,7 @@ const InputBox = ({
         )}
 
         {EndIcon && (
-          <div className="absolute inset-y-0 right-3 flex items-center">
+          <div className="absolute inset-y-0 flex items-center right-3">
             <Button
               variant="transparent"
               modifier="plain"
