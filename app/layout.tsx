@@ -1,6 +1,6 @@
 import "./globals.css";
-import { inter } from "@/ui/fonts/fonts";
 import Link from "next/link";
+import { urbanist } from "@/ui/fonts/fonts";
 
 export const metadata = {
   title: "Primetasker",
@@ -14,11 +14,23 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} bg-slate-800 text-white`}>
+      <body
+        className={`
+        font-brand 
+        text-paragraph
+           w-full 
+           mx-auto 
+        
+           `}
+      >
         <nav>
           <ul>
-            <li><Link href="/">Home</Link></li>
-            <li><Link href="/Task">Tasks</Link></li>
+            <li>
+              <Link href="/">Home</Link>
+            </li>
+            <li>
+              <Link href="/Task">Tasks</Link>
+            </li>
           </ul>
         </nav>
         {children}
@@ -26,3 +38,6 @@ export default function RootLayout({
     </html>
   );
 }
+//  max-w-[30.4rem]
+//  md:max-w-[75.2rem]
+//  lg:max-w-[113.6rem]
