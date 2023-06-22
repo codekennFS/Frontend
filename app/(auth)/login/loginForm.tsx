@@ -7,6 +7,7 @@ import Facebook from "@/assets/svg/facebook.svg";
 import Google from "@/assets/svg/google.svg";
 import { Button } from "@/components/ui/button";
 import InputBox from "@/ui/inputs/input";
+import Link from "next/link";
 
 type Props = {};
 
@@ -59,7 +60,7 @@ export default function LoginForm({}: Props) {
 
         <div className="flex items-center justify-end mb-5 gap-x-0">
           <Button modifier="plain" variant="primary">
-            <span className="pl-1 text-paragraph ">Forgot password?</span>
+            <Link href='/fpassword' className="pl-1 text-paragraph ">Forgot password?</Link>
           </Button>
         </div>
 
