@@ -30,7 +30,7 @@ const links = [
 
 export default function Header({}: Props) {
   return (
-    <header className="fixed z-30 top-0 flex items-center justify-between w-screen px-8 h-9 text-primary-main bg-[#BDBDBD]">
+    <header className="fixed z-30 top-0 flex items-center justify-between w-screen px-8 h-9 text-primary-main bg-reserved-100">
       <Link href="/about" className="font-bold text-heading-6">
         <Logo width={43} height={43} />
       </Link>
