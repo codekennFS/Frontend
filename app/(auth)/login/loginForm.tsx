@@ -84,9 +84,9 @@ export default function LoginForm({}: Props) {
         </div>
 
         <div className="flex items-center justify-center mt-5 gap-x-4">
-          <div className="w-full h-[1px] bg-black"></div>
+          <div className="w-full h-one bg-black"></div>
           <p>OR</p>
-          <div className="w-full h-[1px] bg-black"></div>
+          <div className="w-full h-one bg-black"></div>
         </div>
 
         {/* Social Buttons //TODO: Make reusable  */}

@@ -52,6 +52,12 @@ module.exports = {
       transparent: "transparent",
       white: "#FFF",
       black: "#000000",
+      reserved: {
+        50: "#D9D9D9",
+        100: "#BDBDBD",
+        150: "#E9E9E9",
+        200: "#969696",
+      },
       primary: {
         5: "#E7ECFE",
         10: "#CFD9FC",
@@ -112,9 +118,14 @@ module.exports = {
       xs: "0.4rem", //6.4px
       sm: "0.75rem", //12px
       md: "1.5625rem", //25px
-      full: "50%" // 50%
+      full: "50%", // 50%
+      max: "21.875rem",
     },
-    extend: {},
+    extend: {
+      height: {
+        one: "1px"
+      }
+    },
   },
   plugins: [],
 };
