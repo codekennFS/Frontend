@@ -6,9 +6,7 @@ import Apple from "@/assets/svg/apple.svg";
 import Facebook from "@/assets/svg/facebook.svg";
 import Google from "@/assets/svg/google.svg";
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
 import InputBox from "@/ui/inputs/input";
-import React, { useCallback } from "react";
 
 type Props = {};
 
@@ -26,44 +24,28 @@ interface InputField {
 const inputFields: InputField[] = [
   {
     id: 1,
-    name: "fullname",
-    type: "text",
-    placeholder: "Full name",
-    label: "Full name",
-  },
-  {
-    id: 2,
     name: "email",
     type: "email",
     placeholder: "E-mail",
     label: "E-mail",
   },
-
   {
-    id: 3,
+    id: 2,
     name: "password",
     type: "password",
     placeholder: "Password (8+ characters)",
     label: "Full name",
   },
-
-  {
-    id: 4,
-    name: "referral code",
-    type: "text",
-    placeholder: "Referrer Code",
-    label: "Referrer code",
-  },
 ];
 
-export default function SignupForm({}: Props) {
+export default function LoginForm({}: Props) {
   const router = useRouter();
 
   return (
     <>
       <section>
         {inputFields.map((input, idx) => (
-          <div key={idx} className="mb-[2.5rem]">
+          <div key={idx} className="my-[2.5rem]">
             <InputBox
               className="bg-neutral-10 border-[0]  w-[64rem] pl-[1.2rem] py-[2rem] font-normal text-paragraph"
               labelStyle={input.labelStyle}
@@ -75,14 +57,10 @@ export default function SignupForm({}: Props) {
           </div>
         ))}
 
-        <div className="flex items-center gap-x-[1.1rem]">
-          <Checkbox className="h-[3.6rem] w-[3.6rem] rounded-[0.5rem] border-reserved-50 data-[state=checked]:bg-primary-90 data-[state=checked]:text-critical-60 " />
-          <label
-            htmlFor="terms and conditions"
-            className="italic text-paragraph "
-          >
-            I agree to the data privacy policy
-          </label>
+        <div className="flex items-center justify-end mb-5 gap-x-0">
+          <Button modifier="plain" variant="primary">
+            <span className="pl-1 text-paragraph ">Forgot password?</span>
+          </Button>
         </div>
 
         <div>
@@ -90,18 +68,18 @@ export default function SignupForm({}: Props) {
             variant="neutral"
             rounded
             fullWidth
-            className=" text-white py-[2rem] mt-[5.2rem] mb-[2rem]"
+            className=" text-white py-[2rem] mb-[2rem]"
             onClick={() => {}}
           >
-            <span className="uppercase text-paragraph ">Sign up </span>
+            <span className="uppercase text-paragraph ">Sign in </span>
           </Button>
         </div>
 
         <div className="flex items-center justify-center gap-x-0">
-          <p>Have an account?</p>
+          <p>Don&apos;t have an account?</p>
 
           <Button modifier="plain" variant="primary">
-            <span className="pl-1 text-paragraph ">Sign in</span>
+            <span className="pl-1 text-paragraph ">Sign up</span>
           </Button>
         </div>
 
@@ -119,7 +97,7 @@ export default function SignupForm({}: Props) {
             rounded
             className="py-[2rem] w-[20rem] text-center"
           >
-            <span className="text-paragraph"> Sign up with Google</span>
+            <span className="text-paragraph"> Sign in with Google</span>
           </Button>
 
           <Button
@@ -128,7 +106,7 @@ export default function SignupForm({}: Props) {
             rounded
             className="w-[20rem] text-center py-[2rem]"
           >
-            <span className="text-paragraph "> Sign up with Facebook</span>
+            <span className="text-paragraph "> Sign in with Facebook</span>
           </Button>
 
           <Button
@@ -138,7 +116,7 @@ export default function SignupForm({}: Props) {
             className="w-[20rem] text-center py-[2rem]"
             onClick={() => router.push("/login")}
           >
-            <span className="text-paragraph "> Sign up with Apple</span>
+            <span className="text-paragraph "> Sign in with Apple</span>
           </Button>
         </div>
       </section>

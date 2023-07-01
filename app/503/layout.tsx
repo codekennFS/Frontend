@@ -1,6 +1,6 @@
 import { urbanist } from "@/ui/fonts/fonts";
 
-import "./globals.css";
+import "../globals.css";
 
 export const metadata = {
   title: "Primetasker",
