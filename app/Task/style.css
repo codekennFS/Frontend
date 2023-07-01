@@ -1,0 +1,16 @@
+.task-div {
+    height: 90px;
+    animation-name: scale;
+    animation-duration: 1s;
+}
+
+@keyframes scale {
+    from {transform: scale(10%, 10%);}
+    to {transform: scale(100%, 100%);}
+}
+.container {
+    width: 98%;
+    margin: auto;
+    border-top: 2px solid;
+    margin-top: 30px;
+}

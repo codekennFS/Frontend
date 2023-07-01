@@ -76,7 +76,7 @@ export default function SignupForm({}: Props) {
         ))}
 
         <div className="flex items-center gap-x-[1.1rem]">
-          <Checkbox className="h-[3.6rem] w-[3.6rem] rounded-[0.5rem] border-[#d9d9d9] data-[state=checked]:bg-primary-90 data-[state=checked]:text-critical-60 " />
+          <Checkbox className="h-[3.6rem] w-[3.6rem] rounded-[0.5rem] border-reserved-50 data-[state=checked]:bg-primary-90 data-[state=checked]:text-critical-60 " />
           <label
             htmlFor="terms and conditions"
             className="italic text-paragraph "
@@ -106,9 +106,9 @@ export default function SignupForm({}: Props) {
         </div>
 
         <div className="flex items-center justify-center mt-5 gap-x-4">
-          <div className="w-full h-[1px] bg-black"></div>
+          <div className="w-full h-one bg-black"></div>
           <p>OR</p>
-          <div className="w-full h-[1px] bg-black"></div>
+          <div className="w-full h-one bg-black"></div>
         </div>
 
         {/* Social Buttons //TODO: Make reusable  */}

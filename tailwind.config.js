@@ -41,8 +41,8 @@ module.exports = {
       9: "64px",
     },
     boxShadow: {
-      xs: "0px 2px 2px 2px rgba(51, 51, 51, 0.08)", //2px
-      sm: "0px 4px 6px 3px rgba(51, 51, 51, 0.1)", //6px
+      xs: "0px 2px 2px 2px rgba(51, 51, 51, 0.08)", // 2px
+      sm: "0px 4px 6px 3px rgba(51, 51, 51, 0.1)", // 6px
       md: "0px 6px 10px 5px rgba(51, 51, 51, 0.1)", // 10px
       lg: "0px 10px 14px 8px rgba(51, 51, 51, 0.08)", // 14px
       xl: "0px 10px 18px 10px rgba(51, 51, 51, 0.08)", //16px
@@ -52,6 +52,12 @@ module.exports = {
       transparent: "transparent",
       white: "#FFF",
       black: "#000000",
+      reserved: {
+        50: "#D9D9D9",
+        100: "#BDBDBD",
+        150: "#E9E9E9",
+        200: "#969696",
+      },
       primary: {
         5: "#E7ECFE",
         10: "#CFD9FC",
@@ -109,9 +115,17 @@ module.exports = {
     },
     borderRadius: {
       none: 0,
-      xs: "0.4rem",
+      xs: "0.4rem", //6.4px
+      sm: "0.75rem", //12px
+      md: "1.5625rem", //25px
+      full: "50%", // 50%
+      max: "21.875rem",
     },
-    extend: {},
+    extend: {
+      height: {
+        one: "1px"
+      }
+    },
   },
   plugins: [],
 };
