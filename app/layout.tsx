@@ -14,7 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`font-brand text-paragraph w-full mx-auto `}>
+      <body className={`font-brand text-paragraph w-screen overflow-x-hidden h-full`}>
         {children}
       </body>
     </html>
