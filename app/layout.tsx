@@ -1,4 +1,6 @@
+import { store } from "@/redux/app_store";
 import { urbanist } from "@/ui/fonts/fonts";
+import { Provider } from "react-redux";
 
 import "./globals.css";
 
@@ -14,8 +16,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`font-brand text-paragraph w-screen overflow-x-hidden h-full`}>
-        {children}
+      <body
+        className={`font-brand text-paragraph w-screen overflow-x-hidden h-full`}
+      >
+        <Provider store={store}>{children}</Provider>
       </body>
     </html>
   );
