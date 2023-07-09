@@ -34,7 +34,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-  ],
+, "redux/features/tasks/taskSlice.js"  ],
   "exclude": [
     "node_modules"
   ]

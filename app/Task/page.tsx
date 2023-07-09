@@ -1,4 +1,4 @@
-import Task from "./Task"
+import Task from "../../components/features/Task-Page/Task"
 import './style.css'
 
 export default function TaskPage() {
