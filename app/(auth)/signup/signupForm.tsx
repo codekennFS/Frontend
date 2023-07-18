@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 import Apple from "@/assets/svg/apple.svg";
@@ -7,8 +8,12 @@ import Facebook from "@/assets/svg/facebook.svg";
 import Google from "@/assets/svg/google.svg";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import InputBox from "@/ui/inputs/input";
-import React, { useCallback } from "react";
+import { yupResolver } from "@hookform/resolvers/yup";
+import React, { useCallback, useState } from "react";
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
 
 type Props = {};
 
@@ -49,7 +54,7 @@ const inputFields: InputField[] = [
 
   {
     id: 4,
-    name: "referral code",
+    name: "referralCode",
     type: "text",
     placeholder: "Referrer Code",
     label: "Referrer code",
@@ -59,49 +64,108 @@ const inputFields: InputField[] = [
 export default function SignupForm({}: Props) {
   const router = useRouter();
 
+  const schema = yup.object().shape({
+    fullname: yup.string().required("Name cannot be blank"),
+    email: yup.string().email().required("Please provide a functional email"),
+    password: yup.string().required().min(4).max(20),
+    referralCode: yup.number().integer()
+  });
+
+  const form = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  const [isSuccess, setIsSuccess] = useState(form.formState.isSubmitSuccessful);
+  const [isChecked, setIsChecked] = useState(false);
+
+  const oncheck = () => {
+    setIsChecked(!isChecked);
+  };
+
+  const onSubmit = (data: any) => {
+    setIsSuccess(!isSuccess);
+    console.log(data);
+  };
+
   return (
     <>
       <section>
-        {inputFields.map((input, idx) => (
-          <div key={idx} className="mb-[2.5rem]">
-            <InputBox
-              className="bg-neutral-10 border-[0]  w-[64rem] pl-[1.2rem] py-[2rem] font-normal text-paragraph"
-              labelStyle={input.labelStyle}
-              label={input.label}
-              name={input.name}
-              placeholder={input.placeholder}
-              type={input.type}
-            />
-          </div>
-        ))}
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)}>
+            {inputFields.map((input, idx) => (
+              <FormField
+                name={input.name}
+                key={idx}
+                control={form.control}
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <div className="mb-[2.5rem]">
+                        <InputBox
+                          className="bg-neutral-10 border-[0]  w-[64rem] pl-[1.2rem] py-[2rem] font-normal text-paragraph"
+                          labelStyle={input.labelStyle}
+                          label={input.label}
+                          placeholder={input.placeholder}
+                          type={input.type}
+                          {...field}
+                        />
+                      </div>
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+            ))}
 
-        <div className="flex items-center gap-x-[1.1rem]">
-          <Checkbox className="h-[3.6rem] w-[3.6rem] rounded-[0.5rem] border-reserved-50 data-[state=checked]:bg-primary-90 data-[state=checked]:text-critical-60 " />
-          <label
-            htmlFor="terms and conditions"
-            className="italic text-paragraph "
-          >
-            I agree to the data privacy policy
-          </label>
-        </div>
+            <span className="pb-[1rem] text-[red] text-[medium]">
+              {form.formState.errors.email?.message ||
+                form.formState.errors.password?.message || form.formState.errors.fullname?.message ||
+                form.formState.errors.referralCode?.message}
+            </span>
 
-        <div>
-          <Button
-            variant="neutral"
-            rounded
-            fullWidth
-            className=" text-white py-[2rem] mt-[5.2rem] mb-[2rem]"
-            onClick={() => {}}
-          >
-            <span className="uppercase text-paragraph ">Sign up </span>
-          </Button>
-        </div>
+            {isSuccess && (
+                  <div className="absolute top-[0%] z-10 w-[100%] h-[100vh] bg-black/[0.05]">
+                    <div className=" mt-[3rem] mr-[4rem] lg:mr-[10rem] sm:w-[50%] p-[1rem] float-right md:w-[35%]  h-[fit-content] border-l-4 border-[green] rounded-sm shadow-xl bg-white">
+                    <button type="reset" className="float-right" onClick={onSubmit}>✖️</button>
+                      <p className=" text-center">Your account has been created Successfully</p> <br />
+                    </div>
+                  </div>
+                )}
+            <div className="flex items-center gap-x-[1.1rem] mt-[30px]">
+              <Checkbox
+                onCheckedChange={oncheck}
+                className="h-[3.6rem] w-[3.6rem] rounded-[0.5rem] border-reserved-50 data-[state=checked]:bg-primary-90 data-[state=checked]:text-critical-60"
+                required
+              />
+              <label
+                htmlFor="terms and conditions"
+                className="italic text-paragraph"
+              >
+                I agree to the data privacy policy
+              </label>
+            </div>
+
+            <div>
+              <Button
+                variant="neutral"
+                rounded
+                fullWidth
+                className=" text-white py-[2rem] mt-[5.2rem] mb-[2rem]"
+                type="submit"
+                disabled={isChecked !== true}
+              >
+                <span className="uppercase text-paragraph ">Sign up </span>
+              </Button>
+            </div>
+          </form>
+        </Form>
 
         <div className="flex items-center justify-center gap-x-0">
           <p>Have an account?</p>
 
           <Button modifier="plain" variant="primary">
-            <span className="pl-1 text-paragraph ">Sign in</span>
+            <Link href="/login" className="pl-1 text-paragraph ">
+              Sign in
+            </Link>
           </Button>
         </div>
 

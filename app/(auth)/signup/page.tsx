@@ -1,3 +1,5 @@
+'use client'
+
 import { useGetTasksQuery } from "@/redux/features/tasks/taskApiSlice";
 import React from "react";
 
