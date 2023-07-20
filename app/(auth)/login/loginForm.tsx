@@ -12,7 +12,7 @@ import InputBox from "@/ui/inputs/input";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import * as yup from "yup";
+import { LoginSchema } from "../schema/schema";
 
 type Props = {};
 
@@ -47,13 +47,8 @@ const inputFields: InputField[] = [
 export default function LoginForm({}: Props) {
   const router = useRouter();
 
-  const schema = yup.object().shape({
-    email: yup.string().email().required("Please provide a functional email"),
-    password: yup.string().required("Incorrect Password"),
-  });
-
   const form = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(LoginSchema),
   });
 
   const [isSuccess, setIsSuccess] = useState(form.formState.isSubmitSuccessful);

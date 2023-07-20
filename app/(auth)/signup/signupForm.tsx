@@ -13,7 +13,7 @@ import InputBox from "@/ui/inputs/input";
 import { yupResolver } from "@hookform/resolvers/yup";
 import React, { useCallback, useState } from "react";
 import { useForm } from "react-hook-form";
-import * as yup from "yup";
+import { SignupSchema } from "../schema/schema";
 
 type Props = {};
 
@@ -64,15 +64,8 @@ const inputFields: InputField[] = [
 export default function SignupForm({}: Props) {
   const router = useRouter();
 
-  const schema = yup.object().shape({
-    fullname: yup.string().required("Name cannot be blank"),
-    email: yup.string().email().required("Please provide a functional email"),
-    password: yup.string().required().min(4).max(20),
-    referralCode: yup.number().integer()
-  });
-
   const form = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(SignupSchema),
   });
 
   const [isSuccess, setIsSuccess] = useState(form.formState.isSubmitSuccessful);

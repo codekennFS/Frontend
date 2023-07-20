@@ -8,17 +8,14 @@ import InputBox from "@/ui/inputs/input";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import * as yup from "yup";
+import { ForgotPasswordSchema } from "../schema/schema";
 
 type Props = {};
 
 export default function ForgotPassword({}: Props) {
-  const schema = yup.object().shape({
-    email: yup.string().email().required("Please provide a functional email"),
-  });
 
   const form = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(ForgotPasswordSchema),
   });
 
   const [isSuccess, setIsSuccess] = useState(form.formState.isSubmitSuccessful);
