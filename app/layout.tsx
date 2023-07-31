@@ -1,3 +1,5 @@
+'use client'
+
 import { store } from "@/redux/app_store";
 import { urbanist } from "@/ui/fonts/fonts";
 import { Provider } from "react-redux";
