@@ -1,5 +1,6 @@
 "use client";
 
+import { Input } from "@/components/ui/input";
 import Button from "@/ui/buttons/button";
 import React, { ChangeEvent, InputHTMLAttributes } from "react";
 
@@ -37,7 +38,7 @@ const InputBox = ({
       </label>
 
       <div className={`relative flex    `}>
-        <input
+        <Input
           name={name}
           type={type}
           placeholder={placeholder}

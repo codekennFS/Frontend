@@ -13,7 +13,7 @@ type Props = {};
 export default function Main({}: Props) {
   return (
     <section className="flex flex-row w-full">
-      <article className="flex items-center justify-center w-screen min-h-screen py-6 lg:h-auto lg:w-auto lg:basis-1/2">
+      <article className="flex items-center lg:justify-center w-screen min-h-screen py-6 lg:h-auto lg:w-auto lg:basis-1/2 px-[3rem]">
         <div className="w-[90%] max-w-4xl">
           <div className="flex justify-center">
             <Link href="/">
