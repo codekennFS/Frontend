@@ -1,5 +1,6 @@
-import Providers from "./Providers";
-import "./globals.css";
+import { urbanist } from "@/ui/fonts/fonts";
+
+import "../globals.css";
 
 export const metadata = {
   title: "Primetasker",
@@ -16,7 +17,7 @@ export default function RootLayout({
       <body
         className={`font-brand text-paragraph w-screen overflow-x-hidden h-full`}
       >
-        <Providers>{children}</Providers>
+        {children}
       </body>
     </html>
   );

@@ -1,18 +1,27 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
-import Apple from "@/assets/svg/apple.svg";
-import Facebook from "@/assets/svg/facebook.svg";
 import Google from "@/assets/svg/google.svg";
-import { Button } from "@/components/ui/button";
+import SocialSignup from "@/components/features/Shared/SocialSignup";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "@/components/ui/form";
+import { Button } from "@/ui/buttons/button";
 import InputBox from "@/ui/inputs/input";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 
-type Props = {};
+import { LoginSchema } from "../schema/schema";
 
 interface InputField {
   id: number;
-  name: string;
+  name: "email" | "password";
   type: string;
   placeholder: string;
   label: string;
@@ -26,99 +35,107 @@ const inputFields: InputField[] = [
     id: 1,
     name: "email",
     type: "email",
-    placeholder: "E-mail",
+    placeholder: "Your email",
     label: "E-mail",
   },
   {
     id: 2,
     name: "password",
     type: "password",
-    placeholder: "Password (8+ characters)",
-    label: "Full name",
+    placeholder: "Your Password",
+    label: "Password (8+ characters)",
   },
 ];
 
-export default function LoginForm({}: Props) {
-  const router = useRouter();
+export default function LoginForm() {
+  const form = useForm({
+    resolver: yupResolver(LoginSchema),
+  });
+
+  const [isSuccess, setIsSuccess] = useState(form.formState.isSubmitSuccessful);
+
+  const onSubmit = (data: any) => {
+    setIsSuccess(!isSuccess);
+    console.log(data);
+  };
 
   return (
     <>
       <section>
-        {inputFields.map((input, idx) => (
-          <div key={idx} className="my-[2.5rem]">
-            <InputBox
-              className="bg-neutral-10 border-[0]  w-[64rem] pl-[1.2rem] py-[2rem] font-normal text-paragraph"
-              labelStyle={input.labelStyle}
-              label={input.label}
-              name={input.name}
-              placeholder={input.placeholder}
-              type={input.type}
-            />
-          </div>
-        ))}
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)}>
+            <div className="space-y-2">
+              {inputFields.map((input) => (
+                <FormField
+                  name={input.name}
+                  key={input.id}
+                  control={form.control}
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <InputBox
+                          className="bg-neutral-10 border-[0] w-[64rem] pl-[1.2rem] py-[2rem] font-normal text-paragraph"
+                          label={input.label}
+                          placeholder={input.placeholder}
+                          type={input.type}
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              ))}
+            </div>
 
-        <div className="flex items-center justify-end mb-5 gap-x-0">
-          <Button modifier="plain" variant="primary">
-            <span className="pl-1 text-paragraph ">Forgot password?</span>
-          </Button>
-        </div>
+            {isSuccess && (
+              <div className="absolute top-[0%] z-10 w-[100%] h-[100vh] bg-black/[0.05]">
+                <div className=" mt-[3rem] mr-[4rem] lg:mr-[10rem] sm:w-[50%] p-[1rem] float-right md:w-[35%]  h-[fit-content] border-l-4 border-[green] rounded-sm shadow-xl bg-white">
+                  <button
+                    type="reset"
+                    className="float-right"
+                    onClick={onSubmit}
+                  >
+                    ✖️
+                  </button>
+                  <p className="text-center ">Login Successful</p> <br />
+                </div>
+              </div>
+            )}
 
-        <div>
-          <Button
-            variant="neutral"
-            rounded
-            fullWidth
-            className=" text-white py-[2rem] mb-[2rem]"
-            onClick={() => {}}
-          >
-            <span className="uppercase text-paragraph ">Sign in </span>
-          </Button>
-        </div>
+            <div className="flex items-center justify-end mb-5 gap-x-0">
+              <Button modifier="plain" variant="primary">
+                <Link href="/forgotpassword" className="pl-1 text-paragraph ">
+                  Forgot password?
+                </Link>
+              </Button>
+            </div>
+
+            <div>
+              <Button
+                variant="neutral"
+                rounded
+                fullWidth
+                className=" text-white py-[2rem] mb-[2rem]"
+                type="submit"
+              >
+                <span className="text-xs font-normal">Sign in </span>
+              </Button>
+            </div>
+          </form>
+        </Form>
 
         <div className="flex items-center justify-center gap-x-0">
           <p>Don&apos;t have an account?</p>
 
           <Button modifier="plain" variant="primary">
-            <span className="pl-1 text-paragraph ">Sign up</span>
+            <Link href="/signup" className="pl-1 text-paragraph ">
+              Sign up
+            </Link>
           </Button>
         </div>
 
-        <div className="flex items-center justify-center mt-5 gap-x-4">
-          <div className="w-full h-[1px] bg-black"></div>
-          <p>OR</p>
-          <div className="w-full h-[1px] bg-black"></div>
-        </div>
-
-        {/* Social Buttons //TODO: Make reusable  */}
-        <div className=" flex flex-row justify-between gap-[2rem] mt-5">
-          <Button
-            variant="neutral"
-            modifier="filled"
-            rounded
-            className="py-[2rem] w-[20rem] text-center"
-          >
-            <span className="text-paragraph"> Sign in with Google</span>
-          </Button>
-
-          <Button
-            variant="neutral"
-            modifier="filled"
-            rounded
-            className="w-[20rem] text-center py-[2rem]"
-          >
-            <span className="text-paragraph "> Sign in with Facebook</span>
-          </Button>
-
-          <Button
-            variant="neutral"
-            modifier="filled"
-            rounded
-            className="w-[20rem] text-center py-[2rem]"
-            onClick={() => router.push("/login")}
-          >
-            <span className="text-paragraph "> Sign in with Apple</span>
-          </Button>
-        </div>
+        <SocialSignup />
       </section>
     </>
   );

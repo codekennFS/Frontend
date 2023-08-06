@@ -1,0 +1,10 @@
+.task-div {
+    height: 90px;
+    animation-name: scale;
+    animation-duration: 1s;
+}
+
+@keyframes scale {
+    from {transform: scale(10%, 10%);}
+    to {transform: scale(100%, 100%);}
+}

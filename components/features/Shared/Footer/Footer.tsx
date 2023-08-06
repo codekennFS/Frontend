@@ -3,52 +3,52 @@ import Link from "next/link";
 import Logo from "@/assets/svg/logo.svg";
 import React from "react";
 
-const Footer = () => {
-  const linkBlocks = [
-    {
-      id: 1,
-      heading: "How it works",
-      links: [
-        { id: 1, text: "Lorem ipsum", link: "" },
-        { id: 2, text: "Lorem ipsum", link: "" },
-        { id: 3, text: "Lorem ipsum", link: "" },
-      ],
-    },
-    {
-      id: 2,
-      heading: "Post your product",
-      links: [
-        { id: 1, text: "Lorem ipsum", link: "" },
-        { id: 2, text: "Lorem ipsum", link: "" },
-        { id: 3, text: "Lorem ipsum", link: "" },
-        { id: 4, text: "Lorem ipsum", link: "" },
-      ],
-    },
-    {
-      id: 3,
-      heading: "Categories",
-      links: [
-        { id: 1, text: "Lorem ipsum", link: "" },
-        { id: 2, text: "Lorem ipsum", link: "" },
-        { id: 3, text: "Lorem ipsum", link: "" },
-      ],
-    },
-    {
-      id: 4,
-      heading: "About",
-      links: [
-        { id: 1, text: "Lorem ipsum", link: "" },
-        { id: 2, text: "Lorem ipsum", link: "" },
-      ],
-    },
-  ];
+const linkBlocks = [
+  {
+    id: 1,
+    heading: "How it works",
+    links: [
+      { id: 1, text: "Lorem ipsum", link: "" },
+      { id: 2, text: "Lorem ipsum", link: "" },
+      { id: 3, text: "Lorem ipsum", link: "" },
+    ],
+  },
+  {
+    id: 2,
+    heading: "Post your product",
+    links: [
+      { id: 1, text: "Lorem ipsum", link: "" },
+      { id: 2, text: "Lorem ipsum", link: "" },
+      { id: 3, text: "Lorem ipsum", link: "" },
+      { id: 4, text: "Lorem ipsum", link: "" },
+    ],
+  },
+  {
+    id: 3,
+    heading: "Categories",
+    links: [
+      { id: 1, text: "Lorem ipsum", link: "" },
+      { id: 2, text: "Lorem ipsum", link: "" },
+      { id: 3, text: "Lorem ipsum", link: "" },
+    ],
+  },
+  {
+    id: 4,
+    heading: "About",
+    links: [
+      { id: 1, text: "Lorem ipsum", link: "" },
+      { id: 2, text: "Lorem ipsum", link: "" },
+    ],
+  },
+];
 
+const Footer = () => {
   return (
     <footer className="p-6 lg:p-8 lg:pt-0">
-      <section className="flex flex-col lg:flex-row gap-5 lg:gap-0 lg:h-[368px] bg-[#D9D9D9] rounded-md md:p-7 lg:py-8 lg:px-9">
+      <section className="flex flex-col lg:flex-row gap-5 lg:gap-0 lg:h-[368px] bg-reserved-50 rounded-md md:p-7 lg:py-8 lg:px-9">
         <div className="space-y-4 basis-1/2">
           <Link href="/home">
-            <div className="w-6 aspect-square text-[7.8px] grid place-items-center rounded-full bg-[#969696]">
+            <div className="w-6 aspect-square text-[7.8px] grid place-items-center rounded-full bg-reserved-200">
               LOGO
             </div>
           </Link>
@@ -63,7 +63,7 @@ const Footer = () => {
             return (
               <div key={linkBlock.id} className="space-y-3">
                 <h4 className="font-bold">{linkBlock.heading}</h4>
-                <div className="flex flex-col space-y-2 text-xs">
+                <div className="flex flex-col text-xs space-y-2">
                   {linkBlock.links.map((link) => {
                     return (
                       <Link key={link.id} href={link.link}>
