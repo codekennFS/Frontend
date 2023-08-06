@@ -65,7 +65,7 @@ const tasks = [
 
 const AvailableTaskers = () => {
   return (
-    <section className="flex flex-col gap-6 p-6 lg:p-8">
+    <section className="flex flex-col p-6 gap-6 lg:p-8">
       <h1 className="text-xl">Lorem ipsum</h1>
       <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-5">
         {tasks.map((task) => {
