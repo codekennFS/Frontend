@@ -14,7 +14,7 @@ import Hero from "@/components/features/Landing-Page/Hero";
 import NewJobAlert from "@/components/features/Landing-Page/NewJobAlert";
 import Footer from "@/components/features/Shared/Footer/Footer";
 import Header from "@/components/features/Shared/Navbar/Header";
-import Button from "@/ui/buttons/button";
+import { Button } from "@/ui/buttons/button";
 
 export default function Home() {
   return (
