@@ -8,9 +8,9 @@ const Hero = () => {
       <div className="h-[78dvh] flex flex-col lg:flex-row items-center bg-reserved-100 px-6 lg:px-8 justify-center pt-9 lg:py-0 pb-6 lg:gap-8">
         <div className="flex flex-col justify-center h-full gap-5 basis-1/2">
           <h1 className="text-xl">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Manage daily tasks easily anywhere, at all times
           </h1>
-          <p className="w-full text-paragraph">
+          <p className="w-full max-w-[550px] text-paragraph text-reserved-200">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
             convallis suscipit nisi, at congue dolor accumsan id. Donec id
             tempor risus. Etiam cursus risus quis luctus luctus. Curabitur

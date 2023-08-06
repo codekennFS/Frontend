@@ -13,7 +13,7 @@ const links = [
   },
   {
     id: 2,
-    text: "Post your product",
+    text: "Post a to-do",
     link: "/postYourProduct",
   },
   {
