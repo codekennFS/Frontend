@@ -17,21 +17,15 @@ const Hero = () => {
             tempor nec enim
           </p>
           <div className="flex gap-4">
-            <Link
-              href={"/getStarted"}
-              className="px-8 py-3 bg-white rounded-xs"
-            >
+            <Link href={"/signup"} className="px-8 py-3 bg-white rounded-xs">
               Get started
             </Link>
-            <Link
-              href={"/getStarted"}
-              className="px-8 py-3 bg-white rounded-xs"
-            >
+            <Link href={"/signup"} className="px-8 py-3 bg-white rounded-xs">
               Learn more
             </Link>
           </div>
         </div>
-        <div className="bg-white w-full basis-1/2 h-[408px]"></div>
+        <div className="w-full h-full basis-1/2"></div>
       </div>
       <div className="flex items-center justify-evenly grow">
         <div className="w-[218px] h-[134px] rounded-[17px] bg-reserved-100"></div>

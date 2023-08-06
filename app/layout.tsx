@@ -1,5 +1,4 @@
-import { urbanist } from "@/ui/fonts/fonts";
-
+import Providers from "./Providers";
 import "./globals.css";
 
 export const metadata = {
@@ -14,8 +13,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`font-brand text-paragraph w-screen overflow-x-hidden h-full`}>
-        {children}
+      <body
+        className={`font-brand text-paragraph w-screen overflow-x-hidden h-full`}
+      >
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
