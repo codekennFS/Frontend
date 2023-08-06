@@ -1,9 +1,4 @@
-'use client'
-
-import { store } from "@/redux/app_store";
-import { urbanist } from "@/ui/fonts/fonts";
-import { Provider } from "react-redux";
-
+import Providers from "./Providers";
 import "./globals.css";
 
 export const metadata = {
@@ -21,7 +16,7 @@ export default function RootLayout({
       <body
         className={`font-brand text-paragraph w-screen overflow-x-hidden h-full`}
       >
-        <Provider store={store}>{children}</Provider>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
