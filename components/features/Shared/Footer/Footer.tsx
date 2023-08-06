@@ -63,7 +63,7 @@ const Footer = () => {
             return (
               <div key={linkBlock.id} className="space-y-3">
                 <h4 className="font-bold">{linkBlock.heading}</h4>
-                <div className="flex flex-col space-y-2 text-xs">
+                <div className="flex flex-col text-xs space-y-2">
                   {linkBlock.links.map((link) => {
                     return (
                       <Link key={link.id} href={link.link}>

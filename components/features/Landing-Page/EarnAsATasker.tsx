@@ -21,7 +21,7 @@ const EarnAsATasker = () => {
   return (
     <section className="flex flex-col p-8 px-0 bg-[#3267E3] gap-[300px]">
       <div className="flex flex-col gap-8 lg:pr-8 lg:flex-row">
-        <div className="flex flex-col gap-5 px-6 text-white basis-1/2 lg:pr-0">
+        <div className="flex flex-col px-6 text-white gap-5 basis-1/2 lg:pr-0">
           <h1 className="text-xl">Lorem ipsum fusce</h1>
           <p className="text-sm">
             Phasellus ut sem sed magna interdum semper. Sed dui nunc, pulvinar

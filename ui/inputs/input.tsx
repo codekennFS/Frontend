@@ -1,7 +1,7 @@
 "use client";
 
 import { Input } from "@/components/ui/input";
-import Button from "@/ui/buttons/button";
+import { Button } from "@/ui/buttons/button";
 import React, { ChangeEvent, InputHTMLAttributes } from "react";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -33,12 +33,13 @@ const InputBox = ({
 
   return (
     <>
-      <label htmlFor={label} className={labelStyle ? labelStyle : "sr-only"}>
+      <label htmlFor={name} className={labelStyle ? labelStyle : ""}>
         {label}
       </label>
 
-      <div className={`relative flex    `}>
+      <div className={`relative flex`}>
         <Input
+          id={name}
           name={name}
           type={type}
           placeholder={placeholder}
@@ -74,14 +75,6 @@ const InputBox = ({
           </div>
         )}
       </div>
-
-      <p
-        className={` text-label text-neutral-90 ${
-          errors.length > 0 ? "text-critical-50" : ""
-        }`}
-      >
-        {}
-      </p>
     </>
   );
 };

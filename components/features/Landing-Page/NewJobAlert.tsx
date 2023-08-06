@@ -23,14 +23,14 @@ const task = [
 
 const NewJobAlert = () => {
   return (
-    <section className="relative flex flex-col min-h-screen gap-5 p-6 lg:p-8">
+    <section className="relative flex flex-col min-h-screen p-6 gap-5 lg:p-8">
       <div className="absolute left-0 w-full h-1/2 -z-10 bg-reserved-150 top-3"></div>
       <div className="lg:h-[26dvh] flex gap-5 lg:gap-0 justify-between">
         <div className="h-[195px] w-[389px] bg-white rounded-sm"></div>
         <div className="h-[195px] w-[389px] bg-white rounded-sm"></div>
         <div className="h-[195px] w-[389px] bg-white rounded-sm"></div>
       </div>
-      <div className="flex flex-col gap-5 p-8 rounded-md grow bg-reserved-100 lg:gap-0">
+      <div className="flex flex-col p-8 gap-5 rounded-md grow bg-reserved-100 lg:gap-0">
         <div className="py-2 bg-white rounded-sm px-7 w-fit">New Job Alert</div>
         <div className="flex flex-col items-center gap-6 lg:flex-row">
           <div className="space-y-4 basis-1/2">
