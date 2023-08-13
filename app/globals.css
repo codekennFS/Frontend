@@ -2,9 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-}
-
 html {
   font-size: 10px;
+}
+
+.hideScrollbar::-webkit-scrollbar-track {
+  display: none;
 }
