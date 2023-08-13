@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import Tasker from "@/assets/hero/tasker.png";
 import Logo from "@/assets/svg/logo.svg";
 import React from "react";
 
@@ -13,8 +14,8 @@ type Props = {};
 export default function Main({}: Props) {
   return (
     <section className="flex flex-row w-full">
-      <article className="flex items-center justify-center w-screen min-h-screen lg:h-auto lg:w-auto lg:basis-1/2 p-[3rem]">
-        <div className="w-full max-w-4xl">
+      <article className="flex items-center justify-center w-screen overflow-scroll h-screen lg:w-auto lg:basis-1/2 p-[3rem]">
+        <div className="w-full h-full max-w-4xl">
           <div className="flex justify-center">
             <Link href="/">
               <Logo width={63} height={63} />
@@ -35,8 +36,16 @@ export default function Main({}: Props) {
         </div>
       </article>
 
-      <div className="flex-col hidden min-h-screen basis-1/2 lg:flex">
-        <div className="flex-1 h-full bg-neutral-20"></div>
+      <div className="justify-end hidden min-h-screen basis-1/2 lg:flex">
+        <div className="relative w-4/5 h-full overflow-hidden rounded-tl-max rounded-bl-max">
+          <Image
+            src={Tasker}
+            fill
+            placeholder="blur"
+            alt="A tasker at work"
+            className="object-cover"
+          />
+        </div>
       </div>
     </section>
   );

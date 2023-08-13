@@ -1,81 +1,93 @@
 import Link from "next/link";
 
-import Logo from "@/assets/svg/logo.svg";
+import Naira from "@/assets/svg/naira.svg";
+import { Facebook, GlobeIcon, Instagram } from "lucide-react";
 import React from "react";
 
 const linkBlocks = [
   {
     id: 1,
-    heading: "How it works",
+    heading: "Support",
     links: [
-      { id: 1, text: "Lorem ipsum", link: "" },
-      { id: 2, text: "Lorem ipsum", link: "" },
-      { id: 3, text: "Lorem ipsum", link: "" },
+      { id: 1, text: "Lorem ipsum", link: "#" },
+      { id: 2, text: "Lorem ipsum", link: "#" },
+      { id: 3, text: "Lorem ipsum", link: "#" },
+      { id: 4, text: "Lorem ipsum", link: "#" },
+      { id: 5, text: "Lorem ipsum", link: "#" },
+      { id: 6, text: "Lorem ipsum", link: "#" },
     ],
   },
   {
     id: 2,
-    heading: "Post your product",
+    heading: "Community",
     links: [
-      { id: 1, text: "Lorem ipsum", link: "" },
-      { id: 2, text: "Lorem ipsum", link: "" },
-      { id: 3, text: "Lorem ipsum", link: "" },
-      { id: 4, text: "Lorem ipsum", link: "" },
+      { id: 1, text: "Lorem ipsum", link: "#" },
+      { id: 2, text: "Lorem ipsum", link: "#" },
+      { id: 3, text: "Lorem ipsum", link: "#" },
+      { id: 4, text: "Lorem ipsum", link: "#" },
     ],
   },
   {
     id: 3,
-    heading: "Categories",
+    heading: "Hosting",
     links: [
-      { id: 1, text: "Lorem ipsum", link: "" },
-      { id: 2, text: "Lorem ipsum", link: "" },
-      { id: 3, text: "Lorem ipsum", link: "" },
+      { id: 1, text: "Lorem ipsum", link: "#" },
+      { id: 2, text: "Lorem ipsum", link: "#" },
+      { id: 3, text: "Lorem ipsum", link: "#" },
+      { id: 4, text: "Lorem ipsum", link: "#" },
+      { id: 5, text: "Lorem ipsum", link: "#" },
     ],
   },
   {
     id: 4,
     heading: "About",
     links: [
-      { id: 1, text: "Lorem ipsum", link: "" },
-      { id: 2, text: "Lorem ipsum", link: "" },
+      { id: 1, text: "Lorem ipsum", link: "#" },
+      { id: 2, text: "Lorem ipsum", link: "#" },
+      { id: 3, text: "Lorem ipsum", link: "#" },
+      { id: 4, text: "Lorem ipsum", link: "#" },
+      { id: 5, text: "Lorem ipsum", link: "#" },
+      { id: 6, text: "Lorem ipsum", link: "#" },
     ],
   },
 ];
 
 const Footer = () => {
   return (
-    <footer className="p-6 lg:p-8 lg:pt-0">
-      <section className="flex flex-col lg:flex-row gap-5 lg:gap-0 lg:h-[368px] bg-reserved-50 rounded-md md:p-7 lg:py-8 lg:px-9">
-        <div className="space-y-4 basis-1/2">
-          <Link href="/home">
-            <div className="w-6 aspect-square text-[7.8px] grid place-items-center rounded-full bg-reserved-200">
-              LOGO
-            </div>
-          </Link>
-          <p className="max-w-xl text-xs">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-            convallis suscipit nisi, at congue dolor
-          </p>
-          <div className="h-4 bg-black w-[200px]"></div>
-        </div>
-        <div className="flex justify-between basis-3/4">
-          {linkBlocks.map((linkBlock) => {
-            return (
-              <div key={linkBlock.id} className="space-y-3">
-                <h4 className="font-bold">{linkBlock.heading}</h4>
-                <div className="flex flex-col text-xs space-y-2">
-                  {linkBlock.links.map((link) => {
-                    return (
-                      <Link key={link.id} href={link.link}>
-                        {link.text}
-                      </Link>
-                    );
-                  })}
-                </div>
+    <footer className="flex flex-col p-6 lg:p-8">
+      <section className="flex justify-around basis-3/4">
+        {linkBlocks.map((linkBlock) => {
+          return (
+            <div key={linkBlock.id} className="space-y-3">
+              <h4 className="font-bold">{linkBlock.heading}</h4>
+              <div className="flex flex-col space-y-2">
+                {linkBlock.links.map((link) => {
+                  return (
+                    <Link key={link.id} href={link.link}>
+                      {link.text}
+                    </Link>
+                  );
+                })}
               </div>
-            );
-          })}
-        </div>
+            </div>
+          );
+        })}
+      </section>
+
+      <section className="flex justify-between pt-6 lg:pt-8 mt-6 lg:mt-8 border-t basis-1/4 grow text-[#D8D8D8]">
+        <section className="flex items-center gap-2">
+          <p>© 2023 Primetasker</p>{" "}
+          <div className="w-[2px] aspect-square border rounded-full"></div>{" "}
+          <Link href={"#"}>Privacy</Link>
+        </section>
+
+        <section className="flex items-center gap-2">
+          <GlobeIcon color="#D8D8D8" size={20} />
+          <p>English (NG)</p>
+          <Naira width={24} height={24} />
+          <Facebook color="#D8D8D8" size={20} />
+          <Instagram color="#D8D8D8" size={20} />
+        </section>
       </section>
     </footer>
   );
