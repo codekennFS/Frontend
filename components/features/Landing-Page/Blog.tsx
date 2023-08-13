@@ -1,50 +1,75 @@
+import Image from "next/image";
+import Link from "next/link";
+
+import Article1 from "@/assets/articles/article1.png";
+import Article2 from "@/assets/articles/article2.png";
+import Article3 from "@/assets/articles/article3.png";
+import { ArrowRight } from "lucide-react";
 import React from "react";
 
-const blogs = [
+const articles = [
   {
     id: 1,
-    title: "Lorem ipsum",
+    title: "Children's Day",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed convallis suscipit nisi, at congue dolor",
-    author: "Lorem ipsum",
+    img: Article1,
   },
   {
     id: 2,
-    title: "Lorem ipsum",
+    title: "World Environment Day",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed convallis suscipit nisi, at congue dolor",
-    author: "Lorem ipsum",
+    img: Article2,
   },
   {
     id: 3,
-    title: "Lorem ipsum",
+    title: "Independence day",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed convallis suscipit nisi, at congue dolor",
-    author: "Lorem ipsum",
+    img: Article3,
   },
 ];
 
 const Blog = () => {
   return (
     <section className="p-6 lg:p-8 space-y-7">
-      <h1 className="text-xl">Lorem</h1>
+      <h1 className="text-lg">Articles and Guides</h1>
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:flex lg:justify-center place-items-center">
-        {blogs.map((blog) => {
+        {articles.map((article) => {
           return (
-            <div
-              key={blog.id}
-              className="p-[20px] border border-reserved-50 lg:w-[350px] rounded-sm space-y-3"
+            <article
+              key={article.id}
+              className="w-full border border-reserved-50 max-w-[350px] rounded-sm"
             >
-              <div className="lg:w-[310px] h-[226px] bg-reserved-50 rounded-sm"></div>
-              <div className="space-y-5">
-                <h4>{blog.title}</h4>
-                <p>{blog.description}</p>
-                <p>{blog.author}</p>
+              <div className="rounded-sm relative bg-[#F4F4F4] h-[250px]">
+                <Image
+                  src={article.img}
+                  fill
+                  placeholder="blur"
+                  alt={article.title}
+                />
               </div>
-            </div>
+              <section className="p-[20px] pt-0 flex flex-col gap-3 bg-[#F4F4F4]">
+                <h4 className="text-sm font-semibold">{article.title}</h4>
+                <p className="opacity-60">{article.description}</p>
+                <Link
+                  href={"#"}
+                  className="flex items-center gap-1 text-brandColor"
+                >
+                  Read more <ArrowRight />
+                </Link>
+              </section>
+            </article>
           );
         })}
       </div>
+      <Link href={"#"} className="flex items-center justify-end gap-1">
+        More articles
+        <span className="rotate-[-45deg]">
+          <ArrowRight />
+        </span>
+      </Link>
     </section>
   );
 };
