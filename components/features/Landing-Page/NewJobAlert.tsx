@@ -1,3 +1,8 @@
+import Link from "next/link";
+
+import Check from "@/assets/svg/fi-rr-check.svg";
+import Play from "@/assets/svg/play.svg";
+import { Bell, HeartHandshake } from "lucide-react";
 import React from "react";
 
 const task = [
@@ -13,46 +18,58 @@ const task = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed convallis suscipit nisi, at congue dolor",
   },
-  {
-    id: 3,
-    task: "Lorem ipsum dolor sit amet",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed convallis suscipit nisi, at congue dolor",
-  },
 ];
+
+const alerts = [{ id: 1 }, { id: 2 }, { id: 3 }];
 
 const NewJobAlert = () => {
   return (
-    <section className="relative flex flex-col min-h-screen p-6 gap-5 lg:p-8">
-      <div className="absolute left-0 w-full h-1/2 -z-10 bg-reserved-150 top-3"></div>
-      <div className="lg:h-[26dvh] flex gap-5 lg:gap-0 justify-between">
-        <div className="h-[195px] w-[389px] bg-white rounded-sm"></div>
-        <div className="h-[195px] w-[389px] bg-white rounded-sm"></div>
-        <div className="h-[195px] w-[389px] bg-white rounded-sm"></div>
-      </div>
-      <div className="flex flex-col p-8 gap-5 rounded-md grow bg-reserved-100 lg:gap-0">
-        <div className="py-2 bg-white rounded-sm px-7 w-fit">New Job Alert</div>
-        <div className="flex flex-col items-center gap-6 lg:flex-row">
-          <div className="space-y-4 basis-1/2">
-            <h1 className="text-xl">Lorem ipsum</h1>
-            {task.map((taskInfo) => {
-              return (
-                <div key={taskInfo.id} className="flex gap-2">
-                  <p className="text-sm">&#x2713;</p>
-                  <div className="space-y-3">
-                    <h2 className="w-full text-md opacity-70">
-                      {taskInfo.task}
-                    </h2>
-                    <p className="opacity-60 text-[18px]">
-                      {taskInfo.description}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
+    <section className="overflow-scroll bg-brandColor">
+      <div className="flex h-full w-fit">
+        {alerts.map((alert) => (
+          <div key={alert.id} className="w-screen h-full py-6 lg:p-8">
+            <article className="flex flex-col gap-5 p-8 rounded-md bg-[#F4F4F4] space-y-7 lg:gap-0">
+              <div className="flex items-center gap-2 py-2 bg-white rounded-sm shadow-xl px-7 w-fit">
+                <Bell fill="black" /> New Job Alert
+              </div>
+
+              <div className="flex flex-col gap-9 lg:flex-row">
+                <section className="flex flex-col gap-4 basis-1/2">
+                  <h1 className="text-lg font-semibold">
+                    Daily tasks should be fun
+                  </h1>
+
+                  {task.map((taskInfo) => {
+                    return (
+                      <div key={taskInfo.id} className="flex items-start gap-3">
+                        <Check width={44} height={40} />
+                        <div className="space-y-3">
+                          <h2 className="w-full text-sm opacity-70">
+                            {taskInfo.task}
+                          </h2>
+                          <p className="opacity-60 text-[18px]">
+                            {taskInfo.description}
+                          </p>
+                        </div>
+                      </div>
+                    );
+                  })}
+
+                  <Link
+                    href={"/login"}
+                    className="text-white bg-brandColor w-fit px-[8rem] py-[2rem] rounded-sm text-xs flex items-center gap-1"
+                  >
+                   <HeartHandshake /> Get more done
+                  </Link>
+                </section>
+
+                <section className="bg-[#A1ACB9] rounded-md basis-3/4 grid place-items-center">
+                  <Play width={200} height={200} />
+                </section>
+              </div>
+            </article>
           </div>
-          <div className="basis-3/4 w-full min-h-[642px] h-full bg-[#B4ACAC] rounded-md"></div>
-        </div>
+        ))}
       </div>
     </section>
   );
