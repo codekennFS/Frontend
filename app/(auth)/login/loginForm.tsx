@@ -64,7 +64,7 @@ export default function LoginForm() {
       <section>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)}>
-            <div className="space-y-2">
+            <div className="space-y-4">
               {inputFields.map((input) => (
                 <FormField
                   name={input.name}
@@ -74,7 +74,7 @@ export default function LoginForm() {
                     <FormItem>
                       <FormControl>
                         <InputBox
-                          className="bg-neutral-10 border-[0] w-[64rem] pl-[1.2rem] py-[2rem] font-normal text-paragraph"
+                          className="border"
                           label={input.label}
                           placeholder={input.placeholder}
                           type={input.type}
@@ -103,9 +103,9 @@ export default function LoginForm() {
               </div>
             )}
 
-            <div className="flex items-center justify-end mb-5 gap-x-0">
+            <div className="flex items-center justify-end my-4 gap-x-0">
               <Button modifier="plain" variant="primary">
-                <Link href="/forgotpassword" className="pl-1 text-paragraph ">
+                <Link href="/forgotpassword" className="text-paragraph text-brandColor">
                   Forgot password?
                 </Link>
               </Button>
@@ -116,7 +116,7 @@ export default function LoginForm() {
                 variant="neutral"
                 rounded
                 fullWidth
-                className=" text-white py-[2rem] mb-[2rem]"
+                className=" text-white py-3 bg-brandColor rounded-sm mb-3"
                 type="submit"
               >
                 <span className="text-xs font-normal">Sign in </span>
@@ -129,7 +129,7 @@ export default function LoginForm() {
           <p>Don&apos;t have an account?</p>
 
           <Button modifier="plain" variant="primary">
-            <Link href="/signup" className="pl-1 text-paragraph ">
+            <Link href="/signup" className="pl-1 text-paragraph text-brandColor">
               Sign up
             </Link>
           </Button>

@@ -1,3 +1,4 @@
+import Google from "@/assets/auth/google.svg";
 import { Button } from "@/components/ui/button";
 import React from "react";
 
@@ -10,15 +11,15 @@ const SocialSignup = () => {
         <div className="w-full bg-black h-one"></div>
       </div>
 
-      {/* Social Buttons //TODO: Make reusable  */}
-      <div className=" flex flex-row justify-between gap-[2rem] mt-5">
+      <div className="mt-5">
         <Button
           variant="neutral"
           modifier="filled"
           rounded
-          className="py-[2rem] w-full text-center"
+          className="py-[2rem] w-full flex gap-2 bg-transparent border border-black"
         >
-          <span className="text-paragraph"> Sign in with Google</span>
+          <Google />
+          <span className="text-paragraph text-black">Continue with Google</span>
         </Button>
       </div>
     </>
