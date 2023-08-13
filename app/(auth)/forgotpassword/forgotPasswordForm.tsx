@@ -32,21 +32,19 @@ export default function ForgotPasswordForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
+      <form className="mt-4" onSubmit={form.handleSubmit(onSubmit)}>
         <FormField
           name="email"
           control={form.control}
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <div className="w-full mt-[2rem]">
-                  <InputBox
-                    defaultValue=""
-                    className="bg-neutral-10 border-[0]  w-[64rem] pl-[1.2rem] py-[2rem] font-normal text-paragraph rounded"
-                    placeholder="Provide us with your registered email"
-                    {...field}
-                  />
-                </div>
+                <InputBox
+                  label="Provide us with your registered E-mail address"
+                  className="border"
+                  placeholder="johnjoe@gmail.com"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -70,26 +68,27 @@ export default function ForgotPasswordForm() {
         <div>
           <Button
             variant="neutral"
-            rounded
             fullWidth
-            className=" text-white py-[2rem] my-[2rem]"
+            className="text-white py-3 bg-brandColor rounded-sm my-3"
             type="submit"
           >
-            <span className="text-xs font-normal">Continue </span>
+            <span className="text-xs font-normal">Continue</span>
           </Button>
         </div>
 
-        <div className="flex items-center justify-center gap-x-0">
+        <div className="lg:flex hidden items-center justify-center">
           <p>Remember your password?</p>
 
           <Button modifier="plain" variant="primary">
-            <Link href="/login" className="pl-1 text-paragraph ">
+            <Link href="/login" className="pl-1 text-paragraph text-brandColor">
               Sign in
             </Link>
           </Button>
         </div>
 
-        <SocialSignup />
+        <span className="hidden lg:block">
+          <SocialSignup />
+        </span>
       </form>
     </Form>
   );

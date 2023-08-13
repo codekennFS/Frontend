@@ -7,7 +7,7 @@ import Tasker from "@/assets/auth/tasker2.png";
 import Logo from "@/assets/svg/logo.svg";
 import React from "react";
 
-import LoginForm from "./loginForm";
+import ResetPasswordForm from "./resetPasswordFrom";
 
 type Props = {};
 
@@ -23,16 +23,16 @@ export default function Main({}: Props) {
           </div>
 
           <div className="my-[1.9rem] space-y-3 text-center lg:text-left">
-            <h1 className="text-md font-bold text-brandColor">
-              Sign in to your account
+            <h1 className="text-md font-bold text-brandColor lg:hidden">
+              Reset password
             </h1>
-            <p className="hidden lg:block">
-              Lorem ipsum dolor sit amet consectetur. A purus nisl eu dignissim
-              nec quam.
-            </p>
+            <h1 className="text-md font-bold text-brandColor hidden lg:block">
+              Let&apos;s help you reset your password
+            </h1>
+            <p>Enter and confirm your new password</p>
           </div>
 
-          <LoginForm />
+          <ResetPasswordForm />
         </div>
       </article>
 

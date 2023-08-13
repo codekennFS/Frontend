@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 
-import SocialSignup from "@/components/features/Shared/SocialSignup";
 import {
   Form,
   FormControl,
@@ -21,7 +20,7 @@ import { LoginSchema } from "../schema/schema";
 
 interface InputField {
   id: number;
-  name: "email" | "password";
+  name: "password";
   type: string;
   placeholder: string;
   label: string;
@@ -33,21 +32,21 @@ interface InputField {
 const inputFields: InputField[] = [
   {
     id: 1,
-    name: "email",
-    type: "email",
-    placeholder: "Your email",
-    label: "E-mail",
+    name: "password",
+    type: "password",
+    placeholder: "********",
+    label: "Enter a new password (8+ characters)",
   },
   {
     id: 2,
     name: "password",
     type: "password",
-    placeholder: "Your Password",
-    label: "Password (8+ characters)",
+    placeholder: "********",
+    label: "Re-enter the new password (8+ characters)",
   },
 ];
 
-export default function LoginForm() {
+export default function ResetPasswordForm() {
   const form = useForm({
     resolver: yupResolver(LoginSchema),
   });
@@ -62,23 +61,6 @@ export default function LoginForm() {
   return (
     <>
       <section>
-        <div className="lg:hidden flex items-center justify-center gap-x-0">
-          <p>Don&apos;t have an account?</p>
-
-          <Button modifier="plain" variant="primary">
-            <Link
-              href="/signup"
-              className="pl-1 text-paragraph text-brandColor"
-            >
-              Sign up
-            </Link>
-          </Button>
-        </div>
-
-        <span className="lg:hidden">
-          <SocialSignup />
-        </span>
-
         <Form {...form}>
           <form className="mt-4" onSubmit={form.handleSubmit(onSubmit)}>
             <div className="space-y-4">
@@ -121,46 +103,18 @@ export default function LoginForm() {
               </div>
             )}
 
-            <div className="flex items-center justify-end my-4 gap-x-0">
-              <Button modifier="plain" variant="primary">
-                <Link
-                  href="/forgotpassword"
-                  className="text-paragraph text-brandColor"
-                >
-                  Forgot password?
-                </Link>
-              </Button>
-            </div>
-
             <div>
               <Button
                 variant="neutral"
                 fullWidth
-                className="text-white py-3 bg-brandColor rounded-sm mb-3"
+                className="text-white py-3 bg-brandColor rounded-sm mt-4"
                 type="submit"
               >
-                <span className="text-xs font-normal">Sign in</span>
+                <span className="text-xs font-normal">Reset password</span>
               </Button>
             </div>
           </form>
         </Form>
-
-        <div className="lg:flex hidden items-center justify-center">
-          <p>Don&apos;t have an account?</p>
-
-          <Button modifier="plain" variant="primary">
-            <Link
-              href="/signup"
-              className="pl-1 text-paragraph text-brandColor"
-            >
-              Sign up
-            </Link>
-          </Button>
-        </div>
-
-        <span className="hidden lg:block">
-          <SocialSignup />
-        </span>
       </section>
     </>
   );
