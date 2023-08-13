@@ -43,11 +43,7 @@ const InputBox = ({
           name={name}
           type={type}
           placeholder={placeholder}
-          className={`${className} ${
-            errors.length > 0
-              ? " border-critical-50 focus:border-critical-50"
-              : ""
-          } my-1 border-[0.15rem] border-neutral-50 text-paragraph outline-none rounded-xs focus:border-neutral-90 disabled:bg-neutral-10 px-[1.2rem] py-[2rem]`}
+          className={`${className} my-1 rounded-sm focus:border-neutral-90 disabled:bg-neutral-10 py-3`}
           onChange={onChange}
         />
 

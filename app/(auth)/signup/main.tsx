@@ -14,21 +14,21 @@ type Props = {};
 export default function Main({}: Props) {
   return (
     <section className="flex flex-row w-full">
-      <article className="flex items-center justify-center w-screen overflow-scroll h-screen lg:w-auto lg:basis-1/2 p-[3rem]">
-        <div className="w-full h-full max-w-4xl">
+      <article className="flex items-center justify-center w-screen min-h-screen lg:h-auto lg:w-auto lg:basis-1/2 p-[3rem]">
+        <div className="w-full max-w-4xl">
           <div className="flex justify-center">
             <Link href="/">
               <Logo width={63} height={63} />
             </Link>
           </div>
 
-          <div className="text-center mt-[1.9rem]">
-            <h1 className="text-md font-bold mb-[1.9rem]">
-              Create your account
+          <div className="my-[1.9rem] space-y-3 text-center lg:text-left">
+            <h1 className="text-md font-bold text-brandColor">
+              Create a new account
             </h1>
-            <p className="mb-[3rem]">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
-              at quos quidem ex temporibus expedita doloribus eveniet
+            <p className="hidden lg:block">
+              Lorem ipsum dolor sit amet consectetur. A purus nisl eu dignissim
+              nec quam.
             </p>
           </div>
 
@@ -37,14 +37,8 @@ export default function Main({}: Props) {
       </article>
 
       <div className="justify-end hidden min-h-screen basis-1/2 lg:flex">
-        <div className="relative w-4/5 h-full overflow-hidden rounded-tl-max rounded-bl-max">
-          <Image
-            src={Tasker}
-            fill
-            placeholder="blur"
-            alt="A tasker at work"
-            className="object-cover"
-          />
+        <div className="relative w-4/5 h-full overflow-hidden rounded-bl-max rounded-tl-max">
+          <Image src={Tasker} fill placeholder="blur" className="object-cover" alt="A tasker at work" />
         </div>
       </div>
     </section>
