@@ -1,18 +1,10 @@
-import type { VariantProps } from "class-variance-authority";
-import { cva } from "class-variance-authority";
-import React, { ButtonHTMLAttributes, MouseEvent } from "react";
+import { cn } from "@/lib/utils";
+import { Slot } from "@radix-ui/react-slot";
+import { type VariantProps, cva } from "class-variance-authority";
+import * as React from "react";
 
-// interface ButtonProps
-//   extends ButtonHTMLAttributes<HTMLButtonElement>,
-//     Omit<VariantProps<typeof buttonClasses>, "disabled"> {
-//   children: React.ReactNode;
-//   disabled?: boolean;
-//   type?: "button" | "submit" | "reset";
-//   onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
-// }
-
-const buttonClasses = cva(
-  "flex flex-row items-center gap-x-3 text-paragraph transition ",
+const buttonVariants = cva(
+  "inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background",
   {
     variants: {
       variant: {
@@ -69,73 +61,48 @@ const buttonClasses = cva(
         className: "text-white hover:bg-critical-80 disabled:bg-critical-30",
       },
     ],
-
-    // defaultVariants: {
-    //   variant: "primary",
-    //   modifier: "filled",
-    //   rounded: true,
-    //   size: "regular",
-    // },
   }
 );
-interface ButtonProps
+
+export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonClasses> {
-  children: React.ReactNode;
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
-    { className, modifier, variant, size, fullWidth, rounded, ...props },
+    {
+      className,
+      variant,
+      fullWidth,
+      rounded,
+      modifier,
+      size,
+      asChild = false,
+      ...props
+    },
     ref
   ) => {
+    const Comp = asChild ? Slot : "button";
     return (
-      <button
-        className={buttonClasses({
-          variant,
-          modifier,
-          size,
-          fullWidth,
-          rounded,
-        })}
-        //   disabled={disabled}
-        //   onClick={() => console.log(onClick)}
+      <Comp
+        className={cn(
+          buttonVariants({
+            variant,
+            size,
+            modifier,
+            rounded,
+            fullWidth,
+            className,
+          })
+        )}
         ref={ref}
         {...props}
-      >
-        {props.children}
-      </button>
+      />
     );
   }
 );
+Button.displayName = "Button";
 
-// const Button = ({
-//   children,
-//   variant,
-//   modifier,
-//   size,
-//   fullWidth,
-//   disabled = false,
-//   type,
-//   onClick,
-// }: ButtonProps) => {
-//   return (
-//     <button
-//       type={type}
-//     //   className={buttonClasses({
-//     //     variant,
-//     //     modifier,
-//     //     size,
-//     //     fullWidth,
-//     //   })}
-//     //   disabled={disabled}
-//     //   onClick={() => console.log(onClick)}
-//     ref={ref}
-//     {...props}
-//     >
-//       {children}
-//     </button>
-//   );
-// };
-
-export default Button;
+export { Button, buttonVariants };
