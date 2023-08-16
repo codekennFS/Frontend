@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 
-import Google from "@/assets/svg/google.svg";
 import SocialSignup from "@/components/features/Shared/SocialSignup";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
@@ -15,7 +14,8 @@ import {
 import { Button } from "@/ui/buttons/button";
 import InputBox from "@/ui/inputs/input";
 import { yupResolver } from "@hookform/resolvers/yup";
-import React, { useState } from "react";
+import { EyeOff } from "lucide-react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { SignupSchema } from "../schema/schema";
@@ -36,14 +36,14 @@ const inputFields: InputField[] = [
     id: 1,
     name: "fullname",
     type: "text",
-    placeholder: "Your full name",
+    placeholder: "John Joe",
     label: "Full name",
   },
   {
     id: 2,
     name: "email",
     type: "email",
-    placeholder: "Your e-mail",
+    placeholder: "johnjoe@gmail.com",
     label: "E-mail",
   },
 
@@ -51,7 +51,7 @@ const inputFields: InputField[] = [
     id: 3,
     name: "password",
     type: "password",
-    placeholder: "Your password",
+    placeholder: "********",
     label: "Password (8+ characters)",
   },
 
@@ -59,8 +59,8 @@ const inputFields: InputField[] = [
     id: 4,
     name: "referralCode",
     type: "text",
-    placeholder: "Referrer Code",
-    label: "Referrer code",
+    placeholder: "Enter the code here",
+    label: "Referral code",
   },
 ];
 
@@ -84,9 +84,23 @@ export default function SignupForm() {
   return (
     <>
       <section>
+        <div className="lg:hidden flex items-center justify-center gap-x-0">
+          <p>Already have an account?</p>
+
+          <Button modifier="plain" variant="primary">
+            <Link href="/login" className="pl-1 text-paragraph text-brandColor">
+              Sign in
+            </Link>
+          </Button>
+        </div>
+
+        <span className="lg:hidden">
+          <SocialSignup />
+        </span>
+
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)}>
-            <div className="space-y-2">
+          <form className="mt-4" onSubmit={form.handleSubmit(onSubmit)}>
+            <div className="space-y-4">
               {inputFields.map((input) => (
                 <FormField
                   name={input.name}
@@ -96,11 +110,12 @@ export default function SignupForm() {
                     <FormItem>
                       <FormControl>
                         <InputBox
-                          className="bg-neutral-10 border-[0] w-[64rem] pl-[1.2rem] py-[2rem] font-normal text-paragraph"
+                          className="border"
                           label={input.label}
                           placeholder={input.placeholder}
                           type={input.type}
                           autoComplete={input.name}
+                          EndIcon={input.type === "password" && <EyeOff />}
                           {...field}
                         />
                       </FormControl>
@@ -133,42 +148,52 @@ export default function SignupForm() {
               <Checkbox
                 id="terms and conditions"
                 onCheckedChange={onCheck}
-                className="h-[3.6rem] w-[3.6rem] rounded-[0.5rem] border-reserved-50 data-[state=checked]:bg-primary-90 data-[state=checked]:text-critical-60"
+                className="rounded-xs data-[state=checked]:bg-primary-90"
                 required
               />
               <label
                 htmlFor="terms and conditions"
-                className="italic text-paragraph"
+                className="italic text-paragraph hidden lg:block"
               >
-                I agree to the data privacy policy
+                I agree to the data{" "}
+                <Link href={"#"} className="text-[#FF8B00]">
+                  Privacy Policy
+                </Link>
+              </label>
+              <label
+                htmlFor="terms and conditions"
+                className="italic text-paragraph lg:hidden"
+              >
+                By joining, you agree to the Primetasker terms of Service.
               </label>
             </div>
 
             <div>
               <Button
                 variant="neutral"
-                rounded
                 fullWidth
-                className=" text-white py-[2rem] mb-[2rem]"
+                className="text-white py-3 bg-brandColor rounded-sm mb-3"
                 type="submit"
               >
-                <span className="text-xs font-normal">Sign up </span>
+                <span className="text-xs font-normal">Sign up</span>
               </Button>
             </div>
           </form>
         </Form>
 
-        <div className="flex items-center justify-center gap-x-1">
-          <p>Have an account?</p>
+        <div className="lg:flex hidden items-center justify-center">
+          <p>Already have an account?</p>
 
           <Button modifier="plain" variant="primary">
-            <Link href="/login" className="pl-1 text-paragraph ">
+            <Link href="/login" className="pl-1 text-paragraph text-brandColor">
               Sign in
             </Link>
           </Button>
         </div>
 
-        <SocialSignup />
+        <span className="hidden lg:block">
+          <SocialSignup />
+        </span>
       </section>
     </>
   );
