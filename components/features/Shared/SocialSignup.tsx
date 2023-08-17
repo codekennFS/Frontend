@@ -15,11 +15,12 @@ const SocialSignup = () => {
         <Button
           variant="neutral"
           modifier="filled"
-          rounded
-          className="py-[2rem] w-full flex gap-2 bg-transparent border border-black"
+          className="py-[2rem] w-full flex gap-2 bg-transparent border border-black rounded-sm"
         >
           <Google />
-          <span className="text-paragraph text-black">Continue with Google</span>
+          <span className="text-black text-paragraph">
+            Continue with Google
+          </span>
         </Button>
       </div>
     </div>

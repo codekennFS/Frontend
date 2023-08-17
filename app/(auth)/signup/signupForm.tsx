@@ -14,7 +14,6 @@ import {
 import { Button } from "@/ui/buttons/button";
 import InputBox from "@/ui/inputs/input";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { EyeOff } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -22,7 +21,7 @@ import { SignupSchema } from "../schema/schema";
 
 interface InputField {
   id: number;
-  name: "fullname" | "email" | "password" | "referralCode";
+  name: "firstname" | "lastname" | "email" | "password" | "referrerId";
   type: string;
   placeholder: string;
   label: string;
@@ -34,13 +33,20 @@ interface InputField {
 const inputFields: InputField[] = [
   {
     id: 1,
-    name: "fullname",
+    name: "firstname",
     type: "text",
-    placeholder: "John Joe",
-    label: "Full name",
+    placeholder: "John",
+    label: "First name",
   },
   {
     id: 2,
+    name: "lastname",
+    type: "text",
+    placeholder: "Joe",
+    label: "Last name",
+  },
+  {
+    id: 3,
     name: "email",
     type: "email",
     placeholder: "johnjoe@gmail.com",
@@ -48,7 +54,7 @@ const inputFields: InputField[] = [
   },
 
   {
-    id: 3,
+    id: 4,
     name: "password",
     type: "password",
     placeholder: "********",
@@ -56,11 +62,11 @@ const inputFields: InputField[] = [
   },
 
   {
-    id: 4,
-    name: "referralCode",
+    id: 5,
+    name: "referrerId",
     type: "text",
     placeholder: "Enter the code here",
-    label: "Referral code",
+    label: "Referrer code",
   },
 ];
 
@@ -84,7 +90,7 @@ export default function SignupForm() {
   return (
     <>
       <section>
-        <div className="lg:hidden flex items-center justify-center gap-x-0">
+        <div className="flex items-center justify-center lg:hidden gap-x-0">
           <p>Already have an account?</p>
 
           <Button modifier="plain" variant="primary">
@@ -110,12 +116,13 @@ export default function SignupForm() {
                     <FormItem>
                       <FormControl>
                         <InputBox
-                          className="border"
                           label={input.label}
                           placeholder={input.placeholder}
                           type={input.type}
                           autoComplete={input.name}
-                          EndIcon={input.type === "password" && <EyeOff />}
+                          error={
+                            form.formState.errors[input.name]?.message || ""
+                          }
                           {...field}
                         />
                       </FormControl>
@@ -153,7 +160,7 @@ export default function SignupForm() {
               />
               <label
                 htmlFor="terms and conditions"
-                className="italic text-paragraph hidden lg:block"
+                className="hidden italic text-paragraph lg:block"
               >
                 I agree to the data{" "}
                 <Link href={"#"} className="text-[#FF8B00]">
@@ -172,7 +179,7 @@ export default function SignupForm() {
               <Button
                 variant="neutral"
                 fullWidth
-                className="text-white py-3 bg-brandColor rounded-sm mb-3"
+                className="py-3 mb-3 text-white rounded-sm bg-brandColor"
                 type="submit"
               >
                 <span className="text-xs font-normal">Sign up</span>
@@ -181,7 +188,7 @@ export default function SignupForm() {
           </form>
         </Form>
 
-        <div className="lg:flex hidden items-center justify-center">
+        <div className="items-center justify-center hidden lg:flex">
           <p>Already have an account?</p>
 
           <Button modifier="plain" variant="primary">
