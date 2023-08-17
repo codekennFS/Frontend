@@ -5,7 +5,7 @@ export default function TaskPage() {
     <>
       <div className="container">
         <h1 className="text-5xl">Welcome to the task page</h1>
-        <Task />
+        <Main />
       </div>
     </>
   );
