@@ -13,7 +13,6 @@ import {
 import { Button } from "@/ui/buttons/button";
 import InputBox from "@/ui/inputs/input";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { EyeOff } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -62,7 +61,7 @@ export default function LoginForm() {
   return (
     <>
       <section>
-        <div className="lg:hidden flex items-center justify-center gap-x-0">
+        <div className="flex items-center justify-center lg:hidden gap-x-0">
           <p>Don&apos;t have an account?</p>
 
           <Button modifier="plain" variant="primary">
@@ -91,11 +90,10 @@ export default function LoginForm() {
                     <FormItem>
                       <FormControl>
                         <InputBox
-                          className="border"
                           label={input.label}
                           placeholder={input.placeholder}
                           type={input.type}
-                          EndIcon={input.type === "password" && <EyeOff />}
+                          error={form.formState.errors[input.name]?.message}
                           {...field}
                         />
                       </FormControl>
@@ -136,7 +134,7 @@ export default function LoginForm() {
               <Button
                 variant="neutral"
                 fullWidth
-                className="text-white py-3 bg-brandColor rounded-sm mb-3"
+                className="py-3 mb-3 text-white rounded-sm bg-brandColor"
                 type="submit"
               >
                 <span className="text-xs font-normal">Sign in</span>
@@ -145,7 +143,7 @@ export default function LoginForm() {
           </form>
         </Form>
 
-        <div className="lg:flex hidden items-center justify-center">
+        <div className="items-center justify-center hidden lg:flex">
           <p>Don&apos;t have an account?</p>
 
           <Button modifier="plain" variant="primary">
