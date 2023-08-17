@@ -41,8 +41,8 @@ export default function ForgotPasswordForm() {
               <FormControl>
                 <InputBox
                   label="Provide us with your registered E-mail address"
-                  className="border"
                   placeholder="johnjoe@gmail.com"
+                  error={form.formState.errors.email?.message}
                   {...field}
                 />
               </FormControl>
@@ -69,14 +69,14 @@ export default function ForgotPasswordForm() {
           <Button
             variant="neutral"
             fullWidth
-            className="text-white py-3 bg-brandColor rounded-sm my-3"
+            className="py-3 my-3 text-white rounded-sm bg-brandColor"
             type="submit"
           >
             <span className="text-xs font-normal">Continue</span>
           </Button>
         </div>
 
-        <div className="lg:flex hidden items-center justify-center">
+        <div className="items-center justify-center hidden lg:flex">
           <p>Remember your password?</p>
 
           <Button modifier="plain" variant="primary">

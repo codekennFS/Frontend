@@ -1,7 +1,5 @@
 "use client";
 
-import Link from "next/link";
-
 import {
   Form,
   FormControl,
@@ -12,7 +10,6 @@ import {
 import { Button } from "@/ui/buttons/button";
 import InputBox from "@/ui/inputs/input";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { EyeOff } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -73,11 +70,10 @@ export default function ResetPasswordForm() {
                     <FormItem>
                       <FormControl>
                         <InputBox
-                          className="border"
                           label={input.label}
                           placeholder={input.placeholder}
                           type={input.type}
-                          EndIcon={input.type === "password" && <EyeOff />}
+                          error={form.formState.errors[input.name]?.message}
                           {...field}
                         />
                       </FormControl>
@@ -107,7 +103,7 @@ export default function ResetPasswordForm() {
               <Button
                 variant="neutral"
                 fullWidth
-                className="text-white py-3 bg-brandColor rounded-sm mt-4"
+                className="py-3 mt-4 text-white rounded-sm bg-brandColor"
                 type="submit"
               >
                 <span className="text-xs font-normal">Reset password</span>
