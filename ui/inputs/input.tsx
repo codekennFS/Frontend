@@ -2,18 +2,24 @@
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/ui/buttons/button";
-import React, { ChangeEvent, InputHTMLAttributes } from "react";
+import { Eye, EyeOff } from "lucide-react";
+import React, {
+  ChangeEvent,
+  InputHTMLAttributes,
+  SyntheticEvent,
+  useState,
+} from "react";
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+interface InputProps
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, "value"> {
   name: string;
   label?: string;
   labelStyle?: string;
-  className: string;
+  className?: string;
   StartIcon?: React.ReactNode;
   EndIcon?: React.ReactNode;
+  error?: string;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
-  onStartButtonClick?: (e: React.MouseEvent) => void;
-  onEndButtonClick?: (e: React.MouseEvent) => void;
 }
 
 const InputBox = ({
@@ -25,11 +31,19 @@ const InputBox = ({
   labelStyle,
   StartIcon,
   EndIcon,
-  onStartButtonClick,
-  onEndButtonClick,
+  error,
   className,
 }: InputProps) => {
-  const [errors, setErrors] = React.useState<{}[]>([]);
+  const [hidden, setHidden] = useState(false);
+
+  const onStartButtonClick = (e: SyntheticEvent) => {
+    e.preventDefault();
+  };
+
+  const onEndButtonClick = (e: SyntheticEvent) => {
+    e.preventDefault();
+    setHidden(!hidden);
+  };
 
   return (
     <>
@@ -41,9 +55,11 @@ const InputBox = ({
         <Input
           id={name}
           name={name}
-          type={type}
+          type={name === "password" ? (hidden ? "text" : "password") : type}
           placeholder={placeholder}
-          className={`${className} my-1 rounded-sm focus:border-neutral-90 disabled:bg-neutral-10 py-3`}
+          className={`${className} my-1 rounded-sm border disabled:bg-neutral-10 py-3 ${
+            error ? "border-critical-50" : "border-black"
+          }`}
           onChange={onChange}
         />
 
@@ -59,14 +75,20 @@ const InputBox = ({
           </div>
         )}
 
-        {EndIcon && (
+        {(name === "password" || EndIcon) && (
           <div className="absolute inset-y-0 flex items-center right-3">
             <Button
               variant="transparent"
               modifier="plain"
               onClick={onEndButtonClick}
             >
-              {EndIcon}
+              {name === "password" && hidden ? (
+                <EyeOff />
+              ) : name === "password" && !hidden ? (
+                <Eye />
+              ) : (
+                EndIcon
+              )}
             </Button>
           </div>
         )}
